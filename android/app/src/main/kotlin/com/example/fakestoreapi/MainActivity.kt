@@ -1,0 +1,5 @@
+package com.example.fakestoreapi
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity()
