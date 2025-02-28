@@ -29,14 +29,14 @@ class Product {
 }
 
 // lib/models/cart_item.dart
-class CartItem {
-  final Product product;
-  int quantity;
+// class CartItem {
+//   final Product product;
+//   int quantity;
 
-  CartItem({
-    required this.product,
-    this.quantity = 1,
-  });
+//   CartItem({
+//     required this.product,
+//     this.quantity = 1,
+//   });
 
-  double get total => product.price * quantity;
-}
+//   double get total => product.price * quantity;
+// }

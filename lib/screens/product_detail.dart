@@ -1,8 +1,9 @@
 // lib/screens/product_detail_screen.dart
 
 
-import 'package:fakestoreapi/cart_provider.dart';
-import 'package:fakestoreapi/product_model.dart';
+import 'package:fakestoreapi/provider_service/cart_provider.dart';
+
+import 'package:fakestoreapi/provider_service/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

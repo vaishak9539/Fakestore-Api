@@ -1,7 +1,8 @@
-import 'package:fakestoreapi/api_service.dart';
-import 'package:fakestoreapi/product_detail.dart';
-import 'package:fakestoreapi/product_model.dart';
-import 'package:fakestoreapi/theme_provider.dart';
+import 'package:fakestoreapi/api_service/api_service.dart';
+import 'package:fakestoreapi/provider_service/product_model.dart';
+import 'package:fakestoreapi/provider_service/theme_provider.dart';
+import 'package:fakestoreapi/screens/product_detail.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider_base_tools/provider_base_tools.dart';
@@ -9,7 +10,7 @@ import 'package:provider_base_tools/provider_base_tools.dart';
 import 'cart_screen.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -83,27 +84,27 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
-  title: const Text('E-Commerce App'),
-  actions: [
-    IconButton(
-      icon: AnimatedSwitcher(
-        duration: const Duration(milliseconds: 500),
-        transitionBuilder: (Widget child, Animation<double> animation) {
-          return RotationTransition(turns: animation, child: child);
-        },
-        child: themProvider.isDarkMode
-            ? Icon(CupertinoIcons.sun_min, key: ValueKey('sunIcon'))
-            : Icon(CupertinoIcons.moon_stars_fill, key: ValueKey('moonIcon')),
+        title: const Text('E-Commerce App'),
+        actions: [
+          IconButton(
+            icon: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 500),
+              transitionBuilder: (Widget child, Animation<double> animation) {
+                return RotationTransition(turns: animation, child: child);
+              },
+              child: themProvider.isDarkMode
+                  ? const Icon(CupertinoIcons.sun_min, key: ValueKey('sunIcon'))
+                  : const Icon(CupertinoIcons.moon_stars_fill,
+                      key: ValueKey('moonIcon')),
+            ),
+            onPressed: () {
+              themProvider.toggleTheme();
+            },
+          ),
+        ],
       ),
-      onPressed: () {
-        themProvider.toggleTheme();
-      },
-    ),
-  ],
-),
-
       body: _isLoading
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator())
           : Column(
               children: [
                 Row(
@@ -116,7 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: TextFormField(
                             decoration: InputDecoration(
                               hintText: 'Search Products',
-                              prefixIcon: Icon(Icons.search),
+                              prefixIcon: const Icon(Icons.search),
                               focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                   borderSide:
@@ -144,7 +145,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 builder: (context) => const CartScreen()),
                           );
                         },
-                        icon: Icon(CupertinoIcons.cart))
+                        icon: const Icon(CupertinoIcons.cart))
                   ],
                 ),
                 Padding(
@@ -163,7 +164,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           value: category,
                           child: Text(category),
                         );
-                      }).toList(),
+                      }),
                     ],
                     onChanged: (value) {
                       setState(() {
@@ -210,10 +211,10 @@ class ProductCard extends StatelessWidget {
   final VoidCallback onTap;
 
   const ProductCard({
-    Key? key,
+    super.key,
     required this.product,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

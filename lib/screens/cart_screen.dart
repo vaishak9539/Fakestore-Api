@@ -1,5 +1,7 @@
 
-import 'package:fakestoreapi/cart_provider.dart';
+// ignore_for_file: depend_on_referenced_packages, use_build_context_synchronously
+
+import 'package:fakestoreapi/provider_service/cart_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -7,7 +9,7 @@ class CartScreen extends StatelessWidget {
   const CartScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {  
     return Scaffold(
       appBar: AppBar(
         title: const Text('Shopping Cart'),
@@ -139,10 +141,11 @@ class CartScreen extends StatelessWidget {
                                   );
 
                                   if (shouldDelete == true) {
-                                    Provider.of<CartProvider>(
+                                    var of = Provider.of<CartProvider>(
                                       context,
                                       listen: false,
-                                    ).removeItem(item.product.id);
+                                    );
+                                    of.removeItem(item.product.id);
                                   }
                                 },
                               ),
